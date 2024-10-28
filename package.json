@@ -1,18 +1,15 @@
 {
-  "name": "program-project-overflow-project",
+  "name": "next-saas-rbac",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "lint": "turbo lint"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "turbo": "^2.2.3",
-    "typescript": "5.5.4"
+    "turbo": "latest"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
   }
