@@ -1,3 +1,10 @@
+import { errorHandler } from '@/http/error-handler'
+import { authenticateWithGithub } from '@/http/routes/auth/authenticate-with-github'
+import { authenticateWithPassword } from '@/http/routes/auth/authenticate-with-password'
+import { getProfile } from '@/http/routes/auth/get-profile'
+import { requestPasswordRecover } from '@/http/routes/auth/request-password-recover'
+import { resetPassword } from '@/http/routes/auth/reset-password'
+import { createOrganization } from '@/http/routes/orgs/create-organization'
 import fastifyCors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
@@ -10,13 +17,6 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-
-import { errorHandler } from '@/http/error-handler'
-import { authenticateWithGithub } from '@/http/routes/auth/authenticate-with-github'
-import { authenticateWithPassword } from '@/http/routes/auth/authenticate-with-password'
-import { getProfile } from '@/http/routes/auth/get-profile'
-import { requestPasswordRecover } from '@/http/routes/auth/request-password-recover'
-import { resetPassword } from '@/http/routes/auth/reset-password'
 
 import { createAccount } from './routes/auth/create-account'
 
@@ -63,6 +63,7 @@ app.register(authenticateWithGithub)
 app.register(getProfile)
 app.register(requestPasswordRecover)
 app.register(resetPassword)
+app.register(createOrganization)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('HTTP server running!')
