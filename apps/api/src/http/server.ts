@@ -18,6 +18,9 @@ import {
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 
+import { getMembership } from '@/http/routes/orgs/get-membership'
+import { getOrganization } from '@/http/routes/orgs/get-organization'
+import { getOrganizations } from '@/http/routes/orgs/get-organizations'
 import { createAccount } from './routes/auth/create-account'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -64,6 +67,9 @@ app.register(getProfile)
 app.register(requestPasswordRecover)
 app.register(resetPassword)
 app.register(createOrganization)
+app.register(getMembership)
+app.register(getOrganization)
+app.register(getOrganizations)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('HTTP server running!')
