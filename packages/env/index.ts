@@ -1,5 +1,6 @@
-import { createEnv } from '@t3-oss/env-nextjs'
-import { z } from 'zod'
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
+
 export const env = createEnv({
   server: {
     SERVER_PORT: z.coerce.number().default(3333),
@@ -10,15 +11,17 @@ export const env = createEnv({
     GITHUB_OAUTH_CLIENT_REDIRECT_URI: z.string().url(),
   },
   client: {},
-  shared: {},
+  shared: {
+    API_URL: z.string().url().default('http://localhost:3333'),
+  },
   runtimeEnv: {
     SERVER_PORT: process.env.SERVER_PORT,
     DATABASE_URL: process.env.DATABASE_URL,
     JWT_SECRET: process.env.JWT_SECRET,
     GITHUB_OAUTH_CLIENT_ID: process.env.GITHUB_OAUTH_CLIENT_ID,
     GITHUB_OAUTH_CLIENT_SECRET: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-    GITHUB_OAUTH_CLIENT_REDIRECT_URI:
-      process.env.GITHUB_OAUTH_CLIENT_REDIRECT_URI,
+    GITHUB_OAUTH_CLIENT_REDIRECT_URI: process.env.GITHUB_OAUTH_CLIENT_REDIRECT_URI,
+    API_URL: process.env.API_URL,
   },
   emptyStringAsUndefined: true,
-})
+});
