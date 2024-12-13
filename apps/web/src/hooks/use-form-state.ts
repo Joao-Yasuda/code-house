@@ -14,16 +14,21 @@ export function useFormState(
     initialState ?? { success: false, message: null, errors: null },
   )
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const form = event.currentTarget
-    const data = new FormData(form)
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+  
     startTransition(async () => {
-      const state = await action(data)
+      const state = await action(data);
+  
       if (state.success && onSuccess) {
-        await onSuccess()
+        await onSuccess();
       }
-      setFormState(state)
-    })
+  
+      setFormState(state);
+      form.reset();
+    });
   }
+  
   return [formState, handleSubmit, isPending] as const
 }

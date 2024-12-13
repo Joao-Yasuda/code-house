@@ -1,45 +1,101 @@
-## Features
+# **Sass-Layout**  
+---
 
-### Authentication
+## **Table of Contents**  
+1. [About the Project](#about-the-project)  
+2. [Features](#features)  
+3. [Technologies Used](#technologies-used)  
+4. [Getting Started](#getting-started)  
+    - [Prerequisites](#prerequisites)  
+    - [Installation](#installation)  
+5. [Usage](#usage)  
+6. [Contributing](#contributing)  
 
-- [x] It should be able to authenticate using e-mail & password;
-- [x] It should be able to authenticate using Github account;
-- [x] It should be able to recover password using e-mail;
-- [x] It should be able to create an account (e-mail, name and password);
+---
 
-### Organizations
+## **About the Project**  
+This project contains all the necessary boilerplate to setup a multi-tenant Saas with Next.js including authentication and RBAC authorization.
 
-- [x] It should be able to create a new organization;
-- [x] It should be able to get organizations to which the user belongs;
-- [x] It should be able to update an organization;
-- [x] It should be able to shutdown an organization;
-- [x] It should be able to transfer organization ownership;
+- User authentication
+- RBAC Roles and permissions
+- Organizations and members setup
+- Multitenant Application
 
-### Invites
+---
 
-- [x] It should be able to invite a new member (e-mail, role);
-- [x] It should be able to accept an invite;
-- [x] It should be able to revoke a pending invite;
+## **Features**  
+- User authentication  
+- Dark mode toggle  
+- RBAC organization
+- Create Organization and projects
+- Invite, change roles and delete Members
+---
 
-### Members
+## **Technologies Used**  
+- **Frontend:** Next.js, Shadcnui 
+- **Backend:** Node.js, Fastify
+- **Database:** MongoDB  
+- **Other Tools:** Docker
 
-- [x] It should be able to get organization members;
-- [x] It should be able to update a member role;
+---
 
-### Projects
+## **Getting Started**  
 
-- [x] It should be able to get projects within a organization;
-- [x] It should be able to create a new project (name, url, description);
-- [x] It should be able to update a project (name, url, description);
-- [x] It should be able to delete a project;
+### **Prerequisites**  
+- Node.js (v14 or higher)  
+- pnpm
+- MongoDB installed locally or accessible remotely  
 
-### Billing
+### **Installation**  
+1. **Clone the repository:**  
+   ```bash  
+   git clone https://github.com/username/project-name.git 
+   ```
+2. **Create a .env file:**    
+   ```
+   DATABASE_URL=
+   JWT_SECRET=
+   GITHUB_OAUTH_CLIENT_ID=
+   GITHUB_OAUTH_CLIENT_SECRET=
+   GITHUB_OAUTH_CLIENT_REDIRECT_URI=
+   API_URL=
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd apps/api
+   ```
 
-- [] It should be able to get billing details for organization ($20 per project / $10 per member excluding billing role);
+3. **Install the required dependencies:**
+   ```
+   pnpm install
+   ```
 
-## RBAC
+4. **Navigate to the project directory:**
+   ```
+   cd ../web
+   ```
 
-Roles & permissions.
+5. **Install the required dependencies:**
+   ```bash
+   pnpm install
+   ```
+
+6. **Start the application**
+   ```bash
+   pnpm run dev
+   ```
+
+7. **Create a new terminal**
+   ```bash
+   cd apps/api
+   ```
+
+8. **Start the Backend**
+   ```bash
+   pnpm run dev
+   ```
+
+9. **Open your browser and go to http://localhost:3000**
 
 ### Roles
 

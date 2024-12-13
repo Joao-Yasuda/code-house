@@ -1,3 +1,16 @@
+import fastifyCors from '@fastify/cors'
+import fastifyJwt from '@fastify/jwt'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUI from '@fastify/swagger-ui'
+import { env } from '@saas/env'
+import fastify from 'fastify'
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+  ZodTypeProvider,
+} from 'fastify-type-provider-zod'
+
 import { errorHandler } from '@/http/error-handler'
 import { authenticateWithGithub } from '@/http/routes/auth/authenticate-with-github'
 import { authenticateWithPassword } from '@/http/routes/auth/authenticate-with-password'
@@ -6,6 +19,7 @@ import { requestPasswordRecover } from '@/http/routes/auth/request-password-reco
 import { resetPassword } from '@/http/routes/auth/reset-password'
 import { getOrganizationBilling } from '@/http/routes/billing/get-organization-billing'
 import { acceptInvite } from '@/http/routes/invites/accept-invite'
+import { createInvite } from '@/http/routes/invites/create-invite'
 import { getInvite } from '@/http/routes/invites/get-invite'
 import { getPendingInvites } from '@/http/routes/invites/get-pending-invites'
 import { rejectInvite } from '@/http/routes/invites/reject-invite'
@@ -25,18 +39,7 @@ import { deleteProject } from '@/http/routes/projects/delete-project'
 import { getProject } from '@/http/routes/projects/get-project'
 import { getProjects } from '@/http/routes/projects/get-projects'
 import { updateProject } from '@/http/routes/projects/update-project'
-import fastifyCors from '@fastify/cors'
-import fastifyJwt from '@fastify/jwt'
-import fastifySwagger from '@fastify/swagger'
-import fastifySwaggerUI from '@fastify/swagger-ui'
-import { env } from '@saas/env'
-import fastify from 'fastify'
-import {
-  jsonSchemaTransform,
-  serializerCompiler,
-  validatorCompiler,
-  ZodTypeProvider,
-} from 'fastify-type-provider-zod'
+
 import { createAccount } from './routes/auth/create-account'
 import { getInvites } from './routes/invites/get-invites'
 
@@ -76,12 +79,14 @@ app.register(fastifyJwt, {
 })
 
 app.register(fastifyCors)
+
 app.register(createAccount)
 app.register(authenticateWithPassword)
 app.register(authenticateWithGithub)
 app.register(getProfile)
 app.register(requestPasswordRecover)
 app.register(resetPassword)
+
 app.register(createOrganization)
 app.register(getMembership)
 app.register(getOrganization)
@@ -89,20 +94,25 @@ app.register(getOrganizations)
 app.register(updateOrganization)
 app.register(shutdownOrganization)
 app.register(transferOrganization)
+
 app.register(createProject)
 app.register(deleteProject)
 app.register(getProject)
 app.register(getProjects)
 app.register(updateProject)
+
 app.register(getMembers)
 app.register(updateMember)
 app.register(removeMember)
+
+app.register(createInvite)
 app.register(getInvite)
 app.register(getInvites)
 app.register(acceptInvite)
 app.register(rejectInvite)
 app.register(revokeInvite)
 app.register(getPendingInvites)
+
 app.register(getOrganizationBilling)
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
