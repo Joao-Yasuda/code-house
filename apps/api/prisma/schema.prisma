@@ -114,6 +114,36 @@ model Organization {
   @@map("organizations")
 }
 
+model File {
+  id          Int       @id @default(autoincrement())
+  name        String
+  content     String
+  path        String
+  type        String    @default("file")
+  directory   Directory @relation(fields: [directoryId], references: [id], onDelete: Cascade)
+  directoryId Int
+
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+}
+
+model Directory {
+  id     Int      @id @default(autoincrement())
+  name   String
+  path   String
+  type   String   @default("directory")
+  isOpen Boolean? @default(false)
+
+  parent   Directory?  @relation("ParentChild", fields: [parentId], references: [id], onDelete: Cascade)
+  parentId Int?
+  children Directory[] @relation("ParentChild")
+
+  files File[]
+
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+}
+
 model Project {
   id          String   @id @default(uuid())
   name        String
@@ -128,6 +158,9 @@ model Project {
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String @map("owner_id")
+
+  directories Directory[]
+  files       File[]
 
   @@map("projects")
 }
