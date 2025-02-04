@@ -20,7 +20,7 @@ const App = () => {
           name: 'index.js',
           path: '/src/index.js',
           type: 'file',
-          content: '// Welcome to your Web IDE!\nconsole.log("Hello, World!");'
+          content: 'console.log("Hello, World!");'
         }
       ]
     }
@@ -133,7 +133,7 @@ const App = () => {
     setFileSystem(importedFiles);
   };
 
-  const [isExplorerOpen, setIsExplorerOpen] = useState(true); // State to track FileExplorer visibility
+  const [isExplorerOpen, setIsExplorerOpen] = useState(true); 
 
   return (
     <div className="flex flex-col h-screen dark:black rounded-sm ">
