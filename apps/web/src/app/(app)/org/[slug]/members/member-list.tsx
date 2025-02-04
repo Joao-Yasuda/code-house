@@ -33,6 +33,9 @@ export async function MemberList() {
         <Table>
           <TableBody>
             {members.map((member) => {
+              const isOwner = member.userId === organization.ownerId
+              const isCurrentUser = member.userId === membership.userId
+
               return (
                 <TableRow key={member.id}>
                   <TableCell className="py-2.5" style={{ width: 48 }}>
@@ -53,8 +56,8 @@ export async function MemberList() {
                     <div className="flex flex-col">
                       <span className="inline-flex items-center gap-2 font-medium">
                         {member.name}
-                        {member.userId === membership.userId && ' (me)'}
-                        {organization.ownerId === member.userId && (
+                        {isCurrentUser && ' (me)'}
+                        {isOwner && (
                           <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
                             <Crown className="size-3" />
                             Owner
@@ -71,7 +74,7 @@ export async function MemberList() {
                       {permissions?.can(
                         'transfer_ownership',
                         authOrganization,
-                      ) && (
+                      ) && !isOwner && (
                         <Button size="sm" variant="ghost">
                           <ArrowLeftRight className="mr-2 size-4" />
                           Transfer ownership
@@ -82,19 +85,16 @@ export async function MemberList() {
                         memberId={member.id}
                         value={member.role}
                         disabled={
-                          member.userId === membership.userId ||
-                          member.userId === organization.ownerId ||
+                          isCurrentUser ||
+                          isOwner ||
                           permissions?.cannot('update', 'User')
                         }
                       />
 
-                      {permissions?.can('delete', 'User') && (
+                      {permissions?.can('delete', 'User') && !isOwner && (
                         <form action={removeMemberAction.bind(null, member.id)}>
                           <Button
-                            disabled={
-                              member.userId === membership.userId ||
-                              member.userId === organization.ownerId
-                            }
+                            disabled={isCurrentUser}
                             type="submit"
                             size="sm"
                             variant="destructive"

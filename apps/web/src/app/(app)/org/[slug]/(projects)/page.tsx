@@ -2,7 +2,7 @@ import { ability, getCurrentOrg } from '@/auth/auth'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
-import { ProjectList } from './project-list'
+import ProjectList from './project-list'
 export default async function Projects() {
   const currentOrg = getCurrentOrg()
   const permissions = await ability()

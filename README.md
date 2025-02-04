@@ -1,5 +1,4 @@
-# **Sass-Layout**  
----
+# **Code-House**  
 
 ## **Table of Contents**  
 1. [About the Project](#about-the-project)  
@@ -11,17 +10,16 @@
 5. [Usage](#usage)  
 6. [Contributing](#contributing)  
 
----
 
 ## **About the Project**  
-This project contains all the necessary boilerplate to setup a multi-tenant Saas with Next.js including authentication and RBAC authorization.
+Code House is a comprehensive multi-tenant SaaS platform designed to streamline collaboration, role management, and code deployment for developers and teams. Built with Next.js, it offers a robust foundation for managing organizations, roles, permissions, and collaborative coding environments with seamless GitHub integration.
 
 - User authentication
 - RBAC Roles and permissions
 - Organizations and members setup
 - Multitenant Application
 
----
+
 
 ## **Features**  
 - User authentication  
@@ -29,7 +27,6 @@ This project contains all the necessary boilerplate to setup a multi-tenant Saas
 - RBAC organization
 - Create Organization and projects
 - Invite, change roles and delete Members
----
 
 ## **Technologies Used**  
 - **Frontend:** Next.js, Shadcnui 
@@ -37,7 +34,6 @@ This project contains all the necessary boilerplate to setup a multi-tenant Saas
 - **Database:** MongoDB  
 - **Other Tools:** Docker
 
----
 
 ## **Getting Started**  
 

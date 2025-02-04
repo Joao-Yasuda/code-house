@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { ThemeSwitcher } from './theme/theme-switcher'
 import { Separator } from './ui/separator'
 
-import logoIcon from '@/assets/logo-icon.svg'
+import logoIcon from '@/assets/logo_icon.svg'
 import { ability } from '@/auth/auth'
 import { OrganizationSwitcher } from './organization-switcher'
 import { PendingInvites } from './pending-invites'
@@ -18,7 +18,7 @@ export async function Header() {
       <div className="flex items-center gap-3">
         <Image
           src={logoIcon}
-          className="size-6 dark:invert"
+          className="size-20 dark:invert"
           alt="logo"
         />
 

@@ -10,7 +10,7 @@ async function seed() {
     data: {
       name: 'John Doe',
       email: 'john@acme.com',
-      avatarUrl: 'https://github.com/diego3g.png',
+      avatarUrl: faker.image.avatarGitHub(),
       passwordHash,
     },
   })
