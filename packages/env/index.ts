@@ -12,7 +12,7 @@ export const env = createEnv({
   },
   client: {},
   shared: {
-    API_URL: z.string().url().default('http://localhost:3333'),
+    API_URL: z.string().url().default('https://code-house.onrender.com'),
   },
   runtimeEnv: {
     PORT: process.env.PORT,
